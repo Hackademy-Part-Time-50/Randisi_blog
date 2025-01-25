@@ -14,8 +14,11 @@ Route::get('/articoli', [PageController::class, 'articoli'])->name("articoli");
 //Pagina Del SINGOLO ARTICOLO
 Route::get('/articolo/{id}', [PageController::class, 'articolo'])->name('articolo');
 
-//Pagina CONTATTI
+//Pagina CONTATTI+Form
 Route::get('/contatti',[ContactController::class, 'contatti'])-> name("contatti");
 
+//Pagina Ricezione FORM CONTATTI 
+Route::post('/contatti/send',[ContactController::class, 'send'])-> name("contatti.send");
+
 //Pagina Chi Siamo
-Route::get('/chiSiamo', [PageController::class, 'ChiSiamo'])-> name("ChiSiamo");
+Route::get('/chiSiamo', [PageController::class, 'chisiamo'])-> name("chisiamo");

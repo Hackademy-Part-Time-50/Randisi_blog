@@ -46,7 +46,7 @@ class PageController extends Controller
     }
 
     
-    public function ChiSiamo(){
+    public function chisiamo(){
 
         return view("chiSiamo", [
 
