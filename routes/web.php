@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
 
+
 //Pagina iniziale
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
-
 
 //Pagina degli articoli
 Route::get('/articoli', [PageController::class, 'articoli'])->name("articoli");
@@ -22,3 +22,5 @@ Route::post('/contatti/send',[ContactController::class, 'send'])-> name("contatt
 
 //Pagina Chi Siamo
 Route::get('/chiSiamo', [PageController::class, 'chisiamo'])-> name("chisiamo");
+
+Route::get("/create_Model", [PageController::class, "create"]);
