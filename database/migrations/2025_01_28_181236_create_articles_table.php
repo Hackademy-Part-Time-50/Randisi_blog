@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string("description",255);
             $table->boolean("visible")->default(1);
             $table->text("body")->nullable();
+            $table->string("image", 255)->nullable();
 
         });
     }

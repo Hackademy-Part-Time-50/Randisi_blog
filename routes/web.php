@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ArticleController;
 
 
 //Pagina iniziale
@@ -24,3 +25,10 @@ Route::post('/contatti/send',[ContactController::class, 'send'])-> name("contatt
 Route::get('/chiSiamo', [PageController::class, 'chisiamo'])-> name("chisiamo");
 
 Route::get("/create_Model", [PageController::class, "create"]);
+
+
+//View Creazione Articolo
+Route::get('/articolo-crea',[ArticleController::class, 'create'])-> name("create");
+
+//Pagina Ricezione Articolo 
+Route::post('/articolo-crea/store',[ArticleController::class, 'store'])-> name("articolocrea.store");
