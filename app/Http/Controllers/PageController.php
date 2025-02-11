@@ -23,11 +23,12 @@ class PageController extends Controller
 
     public function articolo($id) {
 
-        $article = \app\Models\Article::findOrFail($id);
+        $article = \App\Models\Article::findOrFail($id);
 
         return view('articolo', [
 
             "article" => $article,
+            
         ]);
             
     }

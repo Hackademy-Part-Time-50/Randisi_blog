@@ -9,8 +9,15 @@ use App\Models\Article;
 
 class ArticleController extends Controller
 {
+    public function index(){
+
+        return view ("articoli.index", [
+           "articles" => Article::all(),
+        ]);
+    }
+    
     public function  create(){
-        return view ("articolocrea");
+        return view ("articleform");
     }
 
     public function store(StoreArticleRequest $request){
@@ -28,5 +35,31 @@ class ArticleController extends Controller
 
         return redirect()->back()->with(['success' => 'Articolo creato correttamente.']);
 
+    }
+
+    public function update(Article $article)
+    {
+        return view("articles.update", [
+            "article" => $article,
+        ]);
+    }
+
+    public function edit(Article $article, Request $request)
+    {
+        //Metodo 1
+        //$article->title = $request->title;
+        //$article->save();
+
+        //Metodo 2(Usa Questo)
+        $article->update($request->all());
+        //return redirect()->back()->with ritorni nella stessa pagina
+        return redirect()->route('index')->with(['success'=>'Articolo Aggiornato con Successo']);
+    }
+
+    public function destroy(Article $article)
+    {
+        $article->delete();
+
+        return redirect()->back()->with(['success'=>'Articolo Eliminato Correttamente.']);
     }
 }

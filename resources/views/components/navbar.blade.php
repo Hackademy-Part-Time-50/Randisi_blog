@@ -19,7 +19,40 @@
                     <li class="nav-item">
                     <a class="nav-link @if(Request::is('contatti')) active fw-bold @endif" href="{{route ('contatti')}}">Contatti</a>
                     </li>
+                    <li class="nav-item">
+                    <a class="nav-link @if(Request::is('articleform')) active fw-bold @endif" href="{{route ('articleform')}}">Crea Articolo</a>
+                    </li>
                 </ul>
+
+                <!-- Sezione Con Riconoscimento dell'utente -->
+                @auth
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                         {{ auth()->user()->email }}
+                        </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="{{route ('index')}}">Gestisci Articoli</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <form action="/logout" method="POST">
+                            @csrf
+                            <button type="button">Esci</button>
+                        </form>
+                    </li>
+                </ul>
+                </li>
+            </ul>
+            @else
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Registrati</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Accedi</a>
+                </li>
+            </ul>
+            @endauth
             </div>
         </div>
     </nav>
