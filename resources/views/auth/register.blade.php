@@ -6,17 +6,17 @@
             <h1>Registrati</h1>
             <p class="lead text-secondary">FORM DI PROVA REGISTRAZIONE</p>
 
-            <form action="{{ route('register.store') }}" method="POST>
+            <form action="{{ route('register.store') }}" method="POST">
             @csrf
                 <div class="row g-3">
                     <div class="col-12">
                         <label for="name">Nome</label>
-                        <input type="text" name="name" id="name" class="form-control">
+                        <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
                         @error('name') <span class="small text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="col-12">
                         <label for="email">Email</label>
-                        <input type="email" name="email" id="email" class="form-control">
+                        <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}">
                         @error('email') <span class="small text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="col-12">
@@ -25,8 +25,8 @@
                         @error('password') <span class="small text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="col-12">
-                        <label for="password-confimration">Conferma La Password</label>
-                        <input type="password" name="password-confimration" id="password-confimration" class="form-control">
+                        <label for="password_confirmation">Conferma La Password</label>
+                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Registrati</button>

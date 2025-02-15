@@ -14,6 +14,7 @@ class PageController extends Controller
                 "titolo" => "Vita Morte e Miracoli di PIPPO FRANCO",
             ]);        
     }
+
     public function articoli() {
 
         return view('articoli', [
@@ -26,9 +27,9 @@ class PageController extends Controller
         $article = \App\Models\Article::findOrFail($id);
 
         return view('articolo', [
-
             "article" => $article,
-            
+            "title" => $article->title,
+            "category" => $article->category,
         ]);
             
     }

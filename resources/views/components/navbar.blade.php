@@ -13,15 +13,7 @@
                     <li class="nav-item">
                     <a class="nav-link @if(Request::is('articoli*')) active fw-bold @endif" href="{{route ('articoli')}}">Articoli</a>
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link @if(Request::is('chisiamo')) active fw-bold @endif" href="{{route ('chisiamo')}}">Chi Siamo</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link @if(Request::is('contatti')) active fw-bold @endif" href="{{route ('contatti')}}">Contatti</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link @if(Request::is('articleform')) active fw-bold @endif" href="{{route ('articleform')}}">Crea Articolo</a>
-                    </li>
+                    
                 </ul>
 
                 <!-- Sezione Con Riconoscimento dell'utente -->
@@ -33,11 +25,12 @@
                         </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li><a class="dropdown-item" href="{{route ('index')}}">Gestisci Articoli</a></li>
+                    <li><a class="dropdown-item" href="{{route ('categories.index')}}">Gestisci Categorie</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li>
-                        <form action="/logout" method="POST">
+                        <form action="/logout" method="POST" class="mx-3">
                             @csrf
-                            <button type="button">Esci</button>
+                            <button type="submit" class="btn btn-primary">Esci</button>
                         </form>
                     </li>
                 </ul>

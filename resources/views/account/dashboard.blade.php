@@ -1,5 +1,5 @@
-<x-layout title="Dashboard">
+<x-layout.layout title="Dashboard">
 
     <h3>Benvenuto {{ auth()->user()->name }}</h3>
 
-</x-layout>
+</x-layout.layout>

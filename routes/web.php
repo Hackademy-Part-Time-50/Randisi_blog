@@ -5,7 +5,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AccountController;
-
+use App\Http\Controllers\CategoryController;
 
 //Pagina iniziale
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
@@ -39,16 +39,31 @@ Route::post('/articleform/store',[ArticleController::class, 'store'])-> name("ar
 Route::middleware('auth')->prefix('account')->group(function(){
 
     //Route::get('/articleform',[ArticleController::class, 'create'])->middleware('auth')->name("articleform");
+    
     //Route::post('/articleform/store',[ArticleController::class, 'store'])->middleware('auth')->name("articleform.store");
     //Rotta degli Account
+
     Route::get('/index', [ArticleController::class, "index"])->name("index");
+    
     Route::get('/', [AccountController::class, 'dashboard'])->middleware('auth')->name("account.dashboard");
     
-    Route::get('/articles/{article}/edit', [AccountController::class, 'edit'])->middleware('auth')->name("edit");
-    Route::put('/articles/{article}/update', [AccountController::class, 'update'])->middleware('auth')->name("update");
-    
+    Route::get('/articles/{article}/edit', [ArticleController::class, 'edit'])->middleware('auth')->name("edit");
+
+    Route::put('/articles/{article}/update', [ArticleController::class, 'update'])->middleware('auth')->name("update");
+
     //Intercambiabile con PATCH; PUT RISCRIVE TUTTA LA RISORSA. PATCH solo alcune cose (il titolo)
+
     Route::delete('/articles/{article}/delete', [ArticleController::class, "destroy"])->middleware("auth")->name("articles.destroy");
 
+    Route::resource('categories', CategoryController::class)->except('show');
+    /*
+    Route::resources([
+
+        'articles' => ArticleController::class,
+        'categories' => CategoryController::class,
+    ]);
+    In questa maniera, ciò scritto da riga 40 a 53 passa tutto su unica riga
+
+    */
 });
 //Funzione per mettere + Rotte in protezione middleware('auth')

@@ -8,7 +8,7 @@
         <div class="col-lg-6 mx-auto">
             <a href="{{route ('index')}}" class="mb-3 button-primary">Torna Indietrto</a>
             <x-success />
-            <form action="{{ route('articles.update', ) }}" method="POST" enctype="multiplart/form-data">
+            <form action="{{ route('articleform.update'), $article}}" method="PUT" enctype="multipart/form-data">
                 
                 @csrf
                     <div class="row my-5">

@@ -11,12 +11,12 @@ class ArticleController extends Controller
 {
     public function index(){
 
-        return view ("articoli.index", [
+        return view ("index", [
            "articles" => Article::all(),
         ]);
     }
     
-    public function  create(){
+    public function create(){
         return view ("articleform");
     }
 
@@ -26,11 +26,17 @@ class ArticleController extends Controller
         
         if($request->hasfile("image") && $request->file("image")->isValid()){
 
+        $folder_name = 'articles/' . $articolo->id;
         
+        $file_name = uniqid('image_') .'.' .$request->file('image')->extension();
             
-        //$imagePath = $request->file('image')->storeAs('cartella', $nomeFile, 'public');
-        //da completare: Inserire variabile per salvare il nome file ed il folder
-        //dare a nome file imagine uniqueid
+        $file_path = $request->file('image')->storeAs($folder_name, $file_name, 'public');
+        
+        $articolo->image = $file_path;
+
+        $articolo->save();
+
+        
         }
 
         return redirect()->back()->with(['success' => 'Articolo creato correttamente.']);
@@ -42,18 +48,24 @@ class ArticleController extends Controller
         return view("articles.update", [
             "article" => $article,
         ]);
+        //Serve a mostrare l'indice di tutti gli Articoli
     }
 
-    public function edit(Article $article, Request $request)
+    public function edit(StoreArticleRequest $article, Request $request)
     {
         //Metodo 1
         //$article->title = $request->title;
         //$article->save();
 
         //Metodo 2(Usa Questo)
+
         $article->update($request->all());
+
         //return redirect()->back()->with ritorni nella stessa pagina
+
         return redirect()->route('index')->with(['success'=>'Articolo Aggiornato con Successo']);
+
+        //Serve per Aggiornare/Modificare un'articolo
     }
 
     public function destroy(Article $article)
