@@ -47,9 +47,9 @@ Route::middleware('auth')->prefix('account')->group(function(){
     
     Route::get('/', [AccountController::class, 'dashboard'])->middleware('auth')->name("account.dashboard");
     
-    Route::get('/articles/{article}/edit', [ArticleController::class, 'edit'])->middleware('auth')->name("edit");
+    Route::get('/articles/{article}/edit', [ArticleController::class, 'edit'])->middleware('auth')->name("articles.edit");
 
-    Route::put('/articles/{article}/update', [ArticleController::class, 'update'])->middleware('auth')->name("update");
+    Route::post('/articles/{article}/update', [ArticleController::class, 'update'])->middleware('auth')->name("articles.update");
 
     //Intercambiabile con PATCH; PUT RISCRIVE TUTTA LA RISORSA. PATCH solo alcune cose (il titolo)
 

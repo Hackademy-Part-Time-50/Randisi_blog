@@ -6,7 +6,7 @@
             <h1>Accedi</h1>
             <p class="lead text-secondary">FORM DI PROVA REGISTRAZIONE</p>
 
-            <form action="/login" method="POST>
+            <form action="/login" method="POST">
                 
                 @csrf
                 <div class="row g-3">

@@ -30,10 +30,10 @@
                 
                 <td class="text-end">
                     
-                    <a href= " {{ route ('update', $article)}} " class="btn btn-sm btn-secondary">Modifica</a>
+                    <a href= " {{ route ('articles.edit', $article) }} " class="btn btn-sm btn-secondary">Modifica</a>
 
                     <form action="{{ route ('articles.destroy', $article )}}" method="POST" class="inline ms-1">
-                        
+                        @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-sm btn-danger">Elimina</button>
                     </form>

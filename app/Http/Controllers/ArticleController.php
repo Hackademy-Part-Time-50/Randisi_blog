@@ -43,15 +43,15 @@ class ArticleController extends Controller
 
     }
 
-    public function update(Article $article)
+    public function edit(Article $article)
     {
-        return view("articles.update", [
+        return view("articles.edit", [
             "article" => $article,
         ]);
         //Serve a mostrare l'indice di tutti gli Articoli
     }
 
-    public function edit(StoreArticleRequest $article, Request $request)
+    public function update(StoreArticleRequest $article, Request $request)
     {
         //Metodo 1
         //$article->title = $request->title;
