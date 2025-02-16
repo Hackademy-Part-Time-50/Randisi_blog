@@ -6,40 +6,47 @@ use App\Http\Requests\StoreArticleRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Models\Article;
+use App\Models\Category;
 
 class ArticleController extends Controller
 {
     public function index(){
 
+        
+
         return view ("index", [
-           "articles" => Article::all(),
+           "articles" => Article::all()
         ]);
     }
     
     public function create(){
-        return view ("articleform");
+        return view ("articleform", [
+            "categories" => Category::all()
+        ]) ;
     }
 
     public function store(StoreArticleRequest $request){
         
-        $articolo= Article::create($request->except("visible"));
+        $article= Article::create($request->except("visible"));
+
+        $article->categories()->attach($request->categories);
         
         if($request->hasfile("image") && $request->file("image")->isValid()){
 
-        $folder_name = 'articles/' . $articolo->id;
+        $folder_name = 'articles/' . $article->id;
         
         $file_name = uniqid('image_') .'.' .$request->file('image')->extension();
             
         $file_path = $request->file('image')->storeAs($folder_name, $file_name, 'public');
         
-        $articolo->image = $file_path;
+        $article->image = $file_path;
 
-        $articolo->save();
+        $article->save();
 
         
         }
 
-        return redirect()->back()->with(['success' => 'Articolo creato correttamente.']);
+        return redirect()->route('index')->with(['success' => 'Articolo creato correttamente.']);
 
     }
 
@@ -47,11 +54,12 @@ class ArticleController extends Controller
     {
         return view("articles.edit", [
             "article" => $article,
+            "categories" => Category::all()
         ]);
-        //Serve a mostrare l'indice di tutti gli Articoli
+        //Creazione da Articles
     }
 
-    public function update(StoreArticleRequest $article, Request $request)
+    public function update(Article $article, StoreArticleRequest $request)
     {
         //Metodo 1
         //$article->title = $request->title;
@@ -60,8 +68,12 @@ class ArticleController extends Controller
         //Metodo 2(Usa Questo)
 
         $article->update($request->all());
+        Category::all();
 
         //return redirect()->back()->with ritorni nella stessa pagina
+
+        $article->categories()->detach();
+        $article->categories()->attach($request->categories);
 
         return redirect()->route('index')->with(['success'=>'Articolo Aggiornato con Successo']);
 

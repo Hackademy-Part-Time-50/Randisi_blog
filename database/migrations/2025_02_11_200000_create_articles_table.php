@@ -15,16 +15,11 @@ return new class extends Migration
           
             $table->id();
             $table->timestamps();
-            $table->string("title", 150);
-            $table->unsignedBigInteger("category_id", 50);
-            $table->string("description",255);
-            $table->boolean("visible")->default(1);
-            $table->text("body")->nullable();
-            $table->string("image", 255)->nullable();
-
-            
-            //Foreing Keys
-            $table->foreign('category_id')->references('id');
+            $table->string('title', 150);
+            $table->string('description',255);
+            $table->tinyInteger('visible')->default(1);
+            $table->text('body')->nullable();
+            $table->string('image', 255)->nullable();
 
         });
     }

@@ -26,7 +26,11 @@
                 
              <td>{{ $article->title }}</td>
                 
-                <td>{{ $article->category}}</td>
+                <td>
+                    @foreach ($article->categories as $category)
+                        {{ $category->name }}
+                    @endforeach
+                </td>
                 
                 <td class="text-end">
                     

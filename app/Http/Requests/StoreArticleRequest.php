@@ -24,7 +24,6 @@ class StoreArticleRequest extends FormRequest
         return [
             
         "title" => "required|max:150",
-        "category" => "required|max:50",
         "description" => "required|max:255",
         "body" => "max:5000",
 
@@ -40,8 +39,8 @@ class StoreArticleRequest extends FormRequest
             'title.max' => 'Il campo Titolo non può essere più lungo di :max caratteri.',
             
             //Messaggi Errore CATEGORIA
-            'category.required' => 'Il campo Categoria è obbligatiorio.',
-            'category.max' => 'Il campo Categoria non può essere più lungo di :max caratteri.',
+            //'category.required' => 'Il campo Categoria è obbligatiorio.',
+            //'category.max' => 'Il campo Categoria non può essere più lungo di :max caratteri.',
             
             //Messaggi Errore DESCRIZIONE
             'description.required' => 'Il campo Descrizione è obbligatiorio.',
