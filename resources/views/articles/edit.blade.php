@@ -8,9 +8,10 @@
         <div class="col-lg-6 mx-auto">
             <a href="{{route ('index')}}" class="mb-3 button-primary">Torna Indietrto</a>
             <x-success />
-            <form action="{{ route('articles.edit', $article)}}" method="GET" enctype="multipart/form-data">
+            <form action="{{ route('articles.update', $article)}}" method="POST" enctype="multipart/form-data">
                 
                 @csrf
+                @method('PUT')
                     <div class="row my-5">
                         <div class="col-12">
 
@@ -23,7 +24,7 @@
                         <label class="mb-2">Imposta la categoria</label>
                             
                             @foreach ($categories as $category)
-                            <input class="form-check-input" type="checkbox" value="{{ $category->id }}" name="categories[]" id="category_{{ $category->id }}" @checked(in_array(category->id, old('categories', $article->categories->pluck('id')->toArray)))>
+                            <input class="form-check-input" type="checkbox" value="{{ $category->id }}" name="categories[]" id="category_{{ $category->id }}" @checked(in_array($category->id, old('categories', $article->categories->pluck('id')->toArray())))>
                                 <label class="form-check-label" for="flexCheckDefault">
                                     {{ $category->name }}
                                 </label>
