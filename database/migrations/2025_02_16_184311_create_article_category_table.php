@@ -17,7 +17,7 @@ return new class extends Migration
             $table->primary(["article_id", "category_id"]);
             
             $table->foreign("article_id")->references("id")->on("articles");
-            $table->foreign("category")->references("id")->on("categories");
+            $table->foreign("category_id")->references("id")->on("categories");
         });
     }
 

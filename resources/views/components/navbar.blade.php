@@ -13,6 +13,9 @@
                     <li class="nav-item">
                     <a class="nav-link @if(Request::is('articoli*')) active fw-bold @endif" href="{{route ('articoli')}}">Articoli</a>
                     </li>
+                    <li class="nav-item">
+                    <a class="nav-link @if(Request::is('anime')) active fw-bold @endif" href="{{route ('anime')}}">Anime</a>
+                    </li>
                     
                 </ul>
 

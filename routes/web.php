@@ -5,7 +5,12 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\CategoryController;
+use Illuminate\Support\Facades\Http;
+
+//Route Anime
+Route::get('/anime', [AnimeController::class, 'index'])->name('animeindex');
 
 //Pagina iniziale
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
@@ -15,6 +20,9 @@ Route::get('/articoli', [PageController::class, 'articoli'])->name("articoli");
 
 //Pagina Del SINGOLO ARTICOLO
 Route::get('/articoli/{id}', [PageController::class, 'articolo'])->name('articolo');
+
+//Route Anime
+Route::get('/anime', [AnimeController::class, 'index'])->name('anime');
 
 //Pagina CONTATTI+Form
 Route::get('/contatti',[ContactController::class, 'contatti'])-> name("contatti");
@@ -43,7 +51,7 @@ Route::middleware('auth')->prefix('account')->group(function(){
     //Route::post('/articleform/store',[ArticleController::class, 'store'])->middleware('auth')->name("articleform.store");
     //Rotta degli Account
 
-    Route::get('/index', [ArticleController::class, "index"])->name("index");
+    Route::get('/index', [ArticleController::class, "index"])->middleware('auth')->name("index");
     
     Route::get('/', [AccountController::class, 'dashboard'])->middleware('auth')->name("account.dashboard");
     
@@ -67,3 +75,6 @@ Route::middleware('auth')->prefix('account')->group(function(){
     */
 });
 //Funzione per mettere + Rotte in protezione middleware('auth')
+
+
+
