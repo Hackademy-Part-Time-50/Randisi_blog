@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Http;
 //Route Anime
 Route::get('/anime', [AnimeController::class, 'index'])->name('animeindex');
 
+//Route Anime per Generi
+Route::get('/anime/genre/{genre_id}', [AnimeController::class, 'byGenre'])->name('anime.byGenre');
+
+//Route per L'Anime Specifico
+Route::get('/anime/{anime_id}', [AnimeController::class, 'show'])->name('anime.show');
+
 //Pagina iniziale
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
 
