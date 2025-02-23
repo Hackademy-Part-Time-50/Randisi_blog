@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Article;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -52,18 +54,24 @@ class AnimeController extends Controller
 
     }
 
-    public function show($anime_id)
+    public function show($anime_id, $genre_id)
     {
-        //public const BASE_URL = "https://api.jikan.moe/v4";
 
-        
         $anime=Http::get(self::BASE_URL. "/anime/". $anime_id)->json();
         
         return view("anime.show", [
             
             "anime"=> $anime["data"],
+            "genre_id"=> $genre_id,
             
         ]);
+    }
+
+    public function apiArticles()
+    {
+        return Article::all();
+        
+        return $articles;
     }
 
 }

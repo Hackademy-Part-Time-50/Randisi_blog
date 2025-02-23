@@ -17,7 +17,7 @@
                         src="{{$single_anime['image']}}" alt="Locandina Anime">
                     </div>
                     <div class="card-footer text-end">
-                        <a class="btn btn-primary" href="{{route ('anime.show', $single_anime['id'])}}">Approfondisci</a>
+                        <a class="btn btn-primary" href="{{route ('anime.show', [$single_anime['id'], $genre]) }}">Approfondisci</a>
                     </div>
                 </div>
             </div>
