@@ -8,6 +8,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Http;
+use App\Models\User;
 
 //Route Anime
 Route::get('/anime', [AnimeController::class, 'index'])->name('animeindex');
@@ -88,4 +89,17 @@ Route::middleware('auth')->prefix('account')->group(function(){
 //Funzione per mettere + Rotte in protezione middleware('auth')
 
 
+//Rotta per Selfwork 17 - Esercizio 2
+Route::get('/counter', function(){
+
+            return view("counter");
+
+});
+
+//Rotta Cerca Utenti
+Route::get('/users/search', function() {
+    return view('search-user', [
+        'users' => User::all()
+    ]);
+});
 
