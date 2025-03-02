@@ -96,10 +96,11 @@ Route::get('/counter', function(){
 
 });
 
-//Rotta Cerca Utenti
+//Rotta Lista Cerca Utenti
 Route::get('/users/search', function() {
-    return view('search-user', [
+    return view('livewire.search-user', [
         'users' => User::all()
+        
     ]);
 });
 

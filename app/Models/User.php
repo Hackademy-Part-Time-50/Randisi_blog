@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use function Laravel\Prompts\search;
+
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -47,7 +49,9 @@ class User extends Authenticatable
     }
     
     static function search($search) {
-        
-        return $search ? self::where('name', 'like', "%$search%")->get() : [];
+        if(!$search){
+            return[];
+        }
+        return $search ? self::where('name', 'LIKE', '%{search}%')->get() : [];
     }
 }
