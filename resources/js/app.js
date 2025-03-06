@@ -6,7 +6,7 @@ fetch("http://127.0.0.1:8000/api/articles")
     .then(response => response.json())
     .then(data=> {
         data.forEach(item => {
-            article_list.innerHTML+= `<li>${item.title}</li>`;
+           article_list.innerHTML+= `<li>${item.title}</li>`;
         })
     });
     

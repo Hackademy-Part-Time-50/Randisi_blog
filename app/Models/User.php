@@ -52,6 +52,6 @@ class User extends Authenticatable
         if(!$search){
             return[];
         }
-        return $search ? self::where('name', 'LIKE', '%{search}%')->get() : [];
+        return $search ? self::where('name', 'LIKE', "%{$search}%")->get() : [];
     }
 }

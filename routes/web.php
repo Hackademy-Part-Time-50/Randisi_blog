@@ -7,6 +7,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\CategoryController;
+use App\Livewire\SearchUser;
 use Illuminate\Support\Facades\Http;
 use App\Models\User;
 
@@ -91,16 +92,15 @@ Route::middleware('auth')->prefix('account')->group(function(){
 
 //Rotta per Selfwork 17 - Esercizio 2
 Route::get('/counter', function(){
-
             return view("counter");
-
 });
 
 //Rotta Lista Cerca Utenti
-Route::get('/users/search', function() {
-    return view('livewire.search-user', [
-        'users' => User::all()
-        
-    ]);
-});
+Route::get('/users/search', SearchUser::class);
+//Se chiamato così usi php artisan livewire:publi
 
+
+/* return view('livewire.search-user', [
+    'users' => User::all(),
+    
+]); */
