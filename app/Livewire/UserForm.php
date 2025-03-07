@@ -22,7 +22,8 @@ class UserForm extends Component
     {
         return [
             "name" => "required|max:5",
-            "email" => "required",
+            "email" => "required|email|unique:users,email",
+            //Aggiunta Validazione su Email Univoca
             "password" => "required",
         ];
     }
@@ -56,13 +57,14 @@ class UserForm extends Component
             "password.required" => "La password è Obbligatoria",
 ]);
 
+        //Metodo Esteso
         User::create([
              'name' => $this->name,
              'email' => $this->email,
              'password' => $this->password,
          ]);
-        //Metodo Esteso
 
+         //Metodo Corto
         // User::create($this->only(
 
         //         'name',
@@ -73,6 +75,8 @@ class UserForm extends Component
         $this->reset('name', 'email', 'password');
 
         session()->flash('success', 'Utente Creato');
+
+        $this->dispatch("user-created");
     }
 
     public function render()

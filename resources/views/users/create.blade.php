@@ -4,14 +4,15 @@
 
         <div class="mt-5 mx-5">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-3">
                     <livewire:user-form />
-                </div>
-                <div class="col-lg-9">
-                    //Elenco Utenti
+                
+                <div class="col-9">
+                
+                <livewire:user-list />
+                
                 </div>
             </div>
+            </div>
         </div>
-
-
 </x-layout.layout>
