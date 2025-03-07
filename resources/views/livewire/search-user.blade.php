@@ -5,10 +5,10 @@
             <div class=“mt-5”>
             <div class=“col-lg-6”>
             <input wire:model.live="search" type="text" id="search" name="search" class="form-control">
-            <div>Test:: {{$search}}</div>   
+               
          </div>
             <div class=“col-lg-6”>
-                 <h4>Elenco utenti</h4>
+                 <h4>Utenti Trovati</h4>
                  
                  <div class=“mt-5”>
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 use App\Livewire\SearchUser;
 use Illuminate\Support\Facades\Http;
 use App\Models\User;
@@ -97,10 +98,6 @@ Route::get('/counter', function(){
 
 //Rotta Lista Cerca Utenti
 Route::get('/users/search', SearchUser::class);
-//Se chiamato così usi php artisan livewire:publi
+//Se chiamato così usi php artisan livewire:public
 
-
-/* return view('livewire.search-user', [
-    'users' => User::all(),
-    
-]); */
+Route::get('/users/create', [UserController::class, "users"])->name("createUser");

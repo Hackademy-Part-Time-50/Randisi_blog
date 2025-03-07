@@ -48,10 +48,10 @@ class User extends Authenticatable
         ];
     }
     
-    static function search($search) {
-        if(!$search){
-            return[];
-        }
-        return $search ? self::where('name', 'LIKE', "%{$search}%")->get() : [];
+    public static function search($search) {
+    
+        return $search ? User::where('name', 'LIKE', "%{$search}%")->get()
+         : [];
     }
+
 }
