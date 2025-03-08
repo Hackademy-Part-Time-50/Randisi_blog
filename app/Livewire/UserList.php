@@ -25,4 +25,10 @@ class UserList extends Component
             'users' => User::orderBy('created_at', 'DESC')->get(),
         ]);
     }
+
+    public function edit($user_id)
+    {
+        $this->dispatch('user-edit', $user_id);
+    }
+
 }

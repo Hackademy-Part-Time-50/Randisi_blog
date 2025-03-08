@@ -1,7 +1,7 @@
-<div>
+<div class="bg-dark-subtle">
     <x-success />
-    <h1 class="mb-4">Crea un nuovo utente</h1>
-    <h4>Completa il form sottostante</h4>
+    <h1 class="mb-4">{{$userId ? 'Modifica Utente' : 'Crea un nuovo utente'}}</h1>
+    <h4>{{$userId ? 'Modifica i Campi Sottostanti' :  'Completa il form sottostante' }}</h4>
     
     <form wire:submit="submit">
 
@@ -19,7 +19,11 @@
         <div class="mb-4 text-danger">@error('password') {{$message}} @enderror</div>
         
         <div class="col-12">
-        <button type="submit" class="btn btn-primary">Crea Utente</button>
+        <button type="submit" class="btn btn-primary">{{$userId ? 'Modifica Utente' :  'Crea Utente' }}</button>
+        
+        @if($userId)
+        <button wire:click="resetForm" type="button" class=" m-2 btn btn-secondary">Annulla</button>
+        @endif
         </div>
         
         
