@@ -8,6 +8,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProdottiController;
 use App\Livewire\SearchUser;
 use Illuminate\Support\Facades\Http;
 use App\Models\User;
@@ -101,3 +102,13 @@ Route::get('/users/search', SearchUser::class);
 //Se chiamato così usi php artisan livewire:public
 
 Route::get('/users/create', [UserController::class, "users"])->name("createUser");
+
+
+//Selfwork 19 - 1
+Route::get('/prodotti', [ProdottiController::class, "show"])->name('prodotti');
+
+Route::get("/numero/{id}", function($id){
+    return view("numero", [
+        "id" => $id,
+    ]);
+});
